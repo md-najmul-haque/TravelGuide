@@ -1,15 +1,20 @@
-import { StatusBar } from 'expo-status-bar';
-import { SafeAreaView } from 'react-native';
-import { Text, View } from 'react-native';
+
 import { TailwindProvider } from 'tailwindcss-react-native';
+import Home from './screens/Home';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <TailwindProvider>
-      <SafeAreaView className='flex-1 justify-center items-center' >
-        <Text className="text-red-500">Hello Najmul</Text>
-        <StatusBar style="auto" />
-      </SafeAreaView >
-    </TailwindProvider>
+    <NavigationContainer>
+      <TailwindProvider>
+        <Stack.Navigator>
+          <Stack.Screen name="Home" component={Home} />
+        </Stack.Navigator>
+      </TailwindProvider>
+    </NavigationContainer>
   );
 }
